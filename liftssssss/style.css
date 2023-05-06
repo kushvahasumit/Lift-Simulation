@@ -24,7 +24,7 @@ body {
 }
 
 .SubmitPage {
-  /* background-color: red; */
+  
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -39,8 +39,7 @@ body {
     cursor: pointer;
     justify-content: center;
     box-shadow: 0px 0px 12px rgb(65, 33, 248);
-    /* margin: 8px; */
-    /* padding: 5px; */
+   
 
 }
 .submit:hover{
@@ -66,7 +65,7 @@ body {
 }
 .buttons{
     display:grid;
-    /* width: 20px; */
+   
     margin: 4px;
     height: 20px;
     border-radius:5px ;
