@@ -141,7 +141,7 @@ function DoorOpenClose(x, freelift) {
 
     door.children[1].style.transform = "translateX( 40px)";
     door.children[1].style.transition = "all 2.5s ease-in-out";
-  }, 1500 * x);
+  }, 2000 * x);
 
   setTimeout(() => {
     door.children[0].style.transition = "all 2.5s ease-in-out";
@@ -149,7 +149,8 @@ function DoorOpenClose(x, freelift) {
 
     door.children[1].style.transition = "all 2.5s ease-in-out";
     door.children[1].style.transform = "translateX(0px)";
+    
     freelift.setAttribute("data-liftStatus", "free");
   }
-  , 4500 + Math.abs(x)*1500);
+  , 2500 + x*2000);
 }
