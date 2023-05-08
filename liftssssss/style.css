@@ -12,14 +12,17 @@ body {
 .inputData {
   margin: 5px;
   padding: 5px;
-  height: 150px;
+  height: 190px;
   width: 250px;
   justify-content: center;
   display: grid;
   background-color: rgba(52, 226, 75, 0.74);
   align-items: center;
   border-radius: 20px;
-  box-shadow: 0px 25px 250px rgb(255, 0, 0);
+  box-shadow: 0px 25px 350px rgb(255, 0, 0);
+  font-size: 20px;
+  /* box-shadow: 0px 1px 1px rgb(63, 34, 228); */
+
 
 }
 
@@ -34,7 +37,7 @@ body {
 
 .submit{
     font-weight: bold;
-    width: 60px;
+    width: 65px;
     border-radius: 5px;
     cursor: pointer;
     justify-content: center;

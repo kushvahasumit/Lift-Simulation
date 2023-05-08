@@ -126,22 +126,25 @@ function movementOfLifts(x) {
   freeLifts.style.transitionDuration = `${2 * Math.abs(x)}s`;
   freeLifts.setAttribute("data-liftStatus", "busy");
 
-  DoorOpenClose(x, freeLifts);
+  setTimeout(() => {
+DoorOpenClose(x, freeLifts)
+    setTimeout(() =>{
+        freeLifts.setAttribute("data-liftStatus", "free")
+    },5500);
+},  Math.abs(x) * 2000)
   
 }
 
 function DoorOpenClose(x, freelift) {
   let door = freelift.firstChild;
-  // console.log(door);
  
-
   setTimeout(() => {
     door.children[0].style.transform = "translateX( -40px)";
     door.children[0].style.transition = "all 2.5s ease-in-out";
 
     door.children[1].style.transform = "translateX( 40px)";
     door.children[1].style.transition = "all 2.5s ease-in-out";
-  }, 2000 * x);
+  }, 0 );
 
   setTimeout(() => {
     door.children[0].style.transition = "all 2.5s ease-in-out";
@@ -150,7 +153,7 @@ function DoorOpenClose(x, freelift) {
     door.children[1].style.transition = "all 2.5s ease-in-out";
     door.children[1].style.transform = "translateX(0px)";
     
-    freelift.setAttribute("data-liftStatus", "free");
   }
-  , 2500 + x*2000);
+  , 2500);
+  
 }
