@@ -87,7 +87,7 @@ function createFloors() {
     const lifts = document.createElement("div");
     lifts.className = "lifts";
     lifts.setAttribute("data-liftStatus", "free");
-    lifts.setAttribute("data-liftPosition", "1");
+    lifts.setAttribute("data-lift-position", "1");
 
     const doors = document.createElement("div");
     doors.className = "doors";
@@ -114,28 +114,39 @@ function createFloors() {
   LiftBox.appendChild(liftSection);
 }
 
-function movementOfLifts(x) {
-  console.log(x);
+function movementOfLifts(floorNo) {
+  console.log(floorNo);
 
   const lifts = Array.from(document.querySelectorAll(".lifts"));
 
-  const freeLifts = lifts.find((lift) => lift.dataset.liftstatus === "free");
-  // console.log(freeLifts);
+  const freeLift = lifts.find((lift) => lift.dataset.liftstatus === "free");
+  
 
-  freeLifts.style.transform = `translateY(${-120 * (x - 1)}px)`;
-  freeLifts.style.transitionDuration = `${2 * Math.abs(x)}s`;
-  freeLifts.setAttribute("data-liftStatus", "busy");
+
+console.log("free lift position - "+Number(freeLift.dataset.liftPosition));
+  
+const liftPosition = Math.abs(
+  Number(freeLift.dataset.liftPosition) - floorNo
+  );
+  console.log("output position - "+liftPosition)
+
+  freeLift.style.transform = `translateY(${-120 * Math.abs(floorNo-1)}px)`;
+  freeLift.style.transition = `all ${2 * liftPosition}s linear`;
+  freeLift.setAttribute("data-liftStatus", "busy");
+
+  
 
   setTimeout(() => {
-DoorOpenClose(x, freeLifts)
+DoorOpenClose(freeLift)
     setTimeout(() =>{
-        freeLifts.setAttribute("data-liftStatus", "free")
+        freeLift.setAttribute("data-liftStatus", "free")
     },5500);
-},  Math.abs(x) * 2000)
+    freeLift.setAttribute("data-lift-position", `${floorNo}`);
+},  Math.abs(liftPosition) * 2000)
   
 }
 
-function DoorOpenClose(x, freelift) {
+function DoorOpenClose(freelift) {
   let door = freelift.firstChild;
  
   setTimeout(() => {
@@ -153,7 +164,6 @@ function DoorOpenClose(x, freelift) {
     door.children[1].style.transition = "all 2.5s ease-in-out";
     door.children[1].style.transform = "translateX(0px)";
     
-  }
-  , 2500);
+  }, 2500);
   
 }
